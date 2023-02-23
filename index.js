@@ -13,7 +13,10 @@ const getQuoteForToday = () => {
 }
 
 const formAQuote = (ctx, quoteObj) => {
-  return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`)
+  if (quoteObj.author) {
+    return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`)
+  }
+  return ctx.replyWithHTML(`<b>"${quoteObj.quote}"</b>`)
 }
 
 bot.start(async (ctx) => {
@@ -23,7 +26,7 @@ bot.start(async (ctx) => {
     await setInterval(() => {
       const quoteObj = getQuoteForToday()
       formAQuote(ctx, quoteObj);
-    }, 4000)
+    }, 3000)
     // 86400000
   } catch (error) {
       console.error(error)
@@ -59,6 +62,7 @@ bot.command('quoteForToday', (ctx) => {
 
 bot.on('sticker', (ctx) => ctx.reply('👍'));
 bot.hears(['hi', 'Hey', 'hey', 'Hi', 'Hello', 'hello', 'What is up?'], (ctx) => ctx.reply('Hey there'));
+bot.catch(console.error)
 bot.launch();
 
 // Enable graceful stop
