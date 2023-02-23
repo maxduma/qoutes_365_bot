@@ -84,7 +84,7 @@ const quotes = [
   {author: 'Abraham Maslow', quote: 'One can choose to go back toward safety or forward toward growth. Growth must be chosen again and again; fear must be overcome again and again.'},
   {author: 'Chinese Proverb', quote: 'Your success is determined by how comfortable you feel outside your comfort zone. Man who waits for roast duck to fly into mouth must wait very, very long time.'},
   {author: 'Will Smith', quote: 'Stop letting people who do so little for you control so much of your mind, feelings & emotions.'},
-  {author: '', quote: ''},
+  {author: 'Henry Ford', quote: 'Nothing is particularly hard if you divide it into small jobs.'},
   {author: '', quote: ''},
   {author: '', quote: ''},
   {author: '', quote: ''},
