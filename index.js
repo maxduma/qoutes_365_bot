@@ -12,11 +12,15 @@ const getQuoteForToday = () => {
   return quote;
 }
 
-const formAQuote = (ctx, quoteObj) => {
+const showQuote = (ctx, quoteObj) => {
   if (quoteObj.author) {
     return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`)
   }
   return ctx.replyWithHTML(`<b>"${quoteObj.quote}"</b>`)
+}
+
+const getRandomNumberQuote = () => {
+  return Math.floor(Math.random() * 100);
 }
 
 bot.start(async (ctx) => {
@@ -25,8 +29,8 @@ bot.start(async (ctx) => {
 
     await setInterval(() => {
       const quoteObj = getQuoteForToday()
-      formAQuote(ctx, quoteObj);
-    }, 3000)
+      showQuote(ctx, quoteObj);
+    }, 10000)
     // 86400000
   } catch (error) {
       console.error(error)
@@ -44,7 +48,7 @@ bot.help((ctx) => {
 bot.command('showAllQuotes', (ctx) => {
   try {
     data.quotes.forEach((quoteObj) => {
-      formAQuote(ctx, quoteObj)
+      showQuote(ctx, quoteObj)
     });
   } catch (error) {
       console.error(error);
@@ -54,7 +58,17 @@ bot.command('showAllQuotes', (ctx) => {
 bot.command('quoteForToday', (ctx) => {
   try {
     const quoteObj = getQuoteForToday()
-    formAQuote(ctx, quoteObj);
+    showQuote(ctx, quoteObj);
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+bot.command('showRandomQuote', (ctx) => {
+  try {
+    const num = getRandomNumberQuote();
+    const quoteObj = data.quotes[num];
+    showQuote(ctx, quoteObj);
   } catch (error) {
     console.error(error)
   }

@@ -3,7 +3,7 @@ const commands = `
 /help - Help, commands in the Quotes Bot
 /quoteForToday - Get today's quote
 /showAllQuotes - Get the full list of quotes
-/stop
+/showRandomQuote - The bot shows one random quote
 `
 
 module.exports.commands = commands;
