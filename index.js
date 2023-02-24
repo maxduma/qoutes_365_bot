@@ -7,7 +7,6 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 const getQuoteForToday = () => {
   const now = new Date();
   const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-
   let indexQuote;
   if(dayOfYear > data.quotes.length) {
     indexQuote = dayOfYear - data.quotes.length - 1;
@@ -16,17 +15,16 @@ const getQuoteForToday = () => {
   }
   indexQuote = 0;
   const quote = data.quotes[indexQuote];
-
   return quote;
 }
 
 const showQuote = async (ctx, quoteObj) => {
   if (quoteObj.photoUrl) {
-    await ctx.replyWithPhoto( {url: quoteObj.photoUrl} )
+    await ctx.replyWithPhoto({url: quoteObj.photoUrl})
    }
 
   if (quoteObj.author) {
-    return ctx.replyWithHTML(`<b>}"${quoteObj.quote}" - ${quoteObj.author}</b>`);
+    return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`);
   }
   return ctx.replyWithHTML(`<b>${quoteObj.quote}"</b>`);
 }
@@ -37,7 +35,7 @@ const getRandomIndexQuote = () => {
 
 bot.start(async (ctx) => {
   try {
-    await ctx.reply(`Hello, ${ctx.message.from.first_name ? ctx.message.from.first_name : 'stranger'}!`);
+    await ctx.reply(`Hello, ${ctx.message.from.first_name ? ctx.message.from.first_name : 'stranger'}! \u{270B}`);
 
     await setInterval(() => {
       const quoteObj = getQuoteForToday();
@@ -57,17 +55,7 @@ bot.help((ctx) => {
   }
 });
 
-bot.command('showAllQuotes', (ctx) => {
-  try {
-    data.quotes.forEach(async (quoteObj) => {
-      await showQuote(ctx, quoteObj);
-    });
-  } catch (error) {
-      console.error(error);
-  }
-})
-
-bot.command('quoteForToday', (ctx) => {
+bot.command('quote', (ctx) => {
   try {
     const quoteObj = getQuoteForToday();
     showQuote(ctx, quoteObj);
@@ -76,7 +64,7 @@ bot.command('quoteForToday', (ctx) => {
   }
 })
 
-bot.command('showRandomQuote', (ctx) => {
+bot.command('random', (ctx) => {
   try {
     const num = getRandomIndexQuote();
     const quoteObj = data.quotes[num];
