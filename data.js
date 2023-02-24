@@ -1,5 +1,5 @@
 const quotes = [
-  {author: 'Goethe J.W.', quote: 'Everything is hard before it is easy'},
+  {photoUrl: 'https://t3.ftcdn.net/jpg/02/56/78/44/360_F_256784442_zsvl2Rey5OvDC9c2PkY5ao5KRxvuD342.jpg', author: 'Goethe J.W.', quote: 'Everything is hard before it is easy'},
   {author: 'Martin Eden (Jack London)', quote: 'When playing in an unfamiliar game, never do the first move'},
   {author: 'Jerzy Gregorek', quote: 'Easy choices, hard life. Hard choices, easy life'},
   {author: '', quote: 'Watch your thoughts - they become words. Watch your words - they become actions. Watch your actions - they become habits. Watch your habits - they become a character. Watch your character - it determines your destiny'},
