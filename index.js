@@ -26,7 +26,7 @@ const showQuote = async (ctx, quoteObj) => {
   if (quoteObj.author) {
     return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`);
   }
-  return ctx.replyWithHTML(`<b>${quoteObj.quote}"</b>`);
+  return ctx.replyWithHTML(`<b>"${quoteObj.quote}"</b>`);
 }
 
 const getRandomIndexQuote = () => {
@@ -36,11 +36,13 @@ const getRandomIndexQuote = () => {
 bot.start(async (ctx) => {
   try {
     await ctx.reply(`Hello, ${ctx.message.from.first_name ? ctx.message.from.first_name : 'stranger'}! \u{270B}`);
-
+    await ctx.reply(`\u{1F601} Let's start!`);
+    await ctx.reply(`Here's your first quote ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}, next one in 24 hours! \u{1F504}\u{1F550}`);
+    const quoteObj = getQuoteForToday();
+    showQuote(ctx, quoteObj);
     await setInterval(() => {
-      const quoteObj = getQuoteForToday();
       showQuote(ctx, quoteObj);
-    }, 86400000)
+    }, 10000);
     // 86400000
   } catch (error) {
       console.error(error);
