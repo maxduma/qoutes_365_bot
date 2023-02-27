@@ -19,49 +19,48 @@ const getQuoteForToday = () => {
 }
 
 const showQuote = async (ctx, quoteObj) => {
-  // try {
+  try {
     await ctx.reply(`---------------------------------------------------------------`);
-    // try {
+    try {
       if (quoteObj.photoUrl) {
         await ctx.replyWithPhoto({url: quoteObj.photoUrl});
       }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    } catch (error) {
+      console.error(error);
+    }
     if (quoteObj.author) {
       return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`);
     }
    return ctx.replyWithHTML(`<b>"${quoteObj.quote}"</b>`);
-  // } catch (error) {
-  //   console.error(error);
-  // }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 const getRandomIndexQuote = () => {
   return Math.floor(Math.random() * data.quotes.length);
 }
 
-const showAll = (ctx) => {
-  let num = 0;
-  setInterval(() => {
-    const quoteObj = data.quotes[num];
-    num++;
-    showQuote(ctx, quoteObj);
-  }, 3000);
-}
+// const showAll = (ctx) => {
+//   let num = 0;
+//   setInterval(() => {
+//     const quoteObj = data.quotes[num];
+//     num++;
+//     showQuote(ctx, quoteObj);
+//   }, 3000);
+// }
 
 bot.start(async (ctx) => {
   try {
     await ctx.reply(`Hello, ${ctx.message.from.first_name ? ctx.message.from.first_name : 'stranger'}! \u{270B}`);
     await ctx.reply(`\u{1F601} Let's start!`);
     await ctx.reply(`Here's your first quote ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}, next one in 24 hours! \u{1F504}\u{1F550}`);
-    await showAll(ctx)
-    // const quoteObj = getQuoteForToday();
-    // showQuote(ctx, quoteObj);
-    // await setInterval(() => {
-    //   showQuote(ctx, quoteObj);
-    // }, 10000);
-    // 86400000
+    // await showAll(ctx)
+    const quoteObj = getQuoteForToday();
+    showQuote(ctx, quoteObj);
+    await setInterval(() => {
+      showQuote(ctx, quoteObj);
+    }, 86400000);
   } catch (error) {
       console.error(error);
   }

@@ -4,5 +4,4 @@ const commands = `
 /quote - Get today's quote
 /random - The bot shows one random quote
 `
-
 module.exports.commands = commands;
