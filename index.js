@@ -19,15 +19,22 @@ const getQuoteForToday = () => {
 }
 
 const showQuote = async (ctx, quoteObj) => {
-  await ctx.reply(`---------------------------------------------------------------`);
-  if (quoteObj.photoUrl) {
-    await ctx.replyWithPhoto({url: quoteObj.photoUrl});
-   }
-
-  if (quoteObj.author) {
-    return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`);
-  }
-  return ctx.replyWithHTML(`<b>"${quoteObj.quote}"</b>`);
+  // try {
+    await ctx.reply(`---------------------------------------------------------------`);
+    // try {
+      if (quoteObj.photoUrl) {
+        await ctx.replyWithPhoto({url: quoteObj.photoUrl});
+      }
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    if (quoteObj.author) {
+      return ctx.replyWithHTML(`<b>"${quoteObj.quote}" - ${quoteObj.author}</b>`);
+    }
+   return ctx.replyWithHTML(`<b>"${quoteObj.quote}"</b>`);
+  // } catch (error) {
+  //   console.error(error);
+  // }
 }
 
 const getRandomIndexQuote = () => {
