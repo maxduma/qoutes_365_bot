@@ -21,17 +21,6 @@ module.exports = async (request, response) => {
         // Use an environment variable so we don't expose it in our code
         const bot = new TelegramBot(process.env.BOT_TOKEN);
 
-        bot.command('random', (ctx) => {
-            ctx.reply('random random random!')
-          })
-          bot.hears(['hi', 'Hey', 'hey', 'Hi', 'Hello', 'hello', 'What is up?'], (ctx) => ctx.reply('Hey there'));
-
-          bot.on('sticker', (ctx) => ctx.reply('👍'));
-
-          bot.start(async (ctx) => {
-             ctx.reply('start 234234234234234')
-          });
-
         // Retrieve the POST request body that gets sent from Telegram
         const { body } = request;
 
