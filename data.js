@@ -237,6 +237,7 @@ const quotes = [
   {photoUrl: 'https://previews.123rf.com/images/bigandserious/bigandserious1708/bigandserious170800015/83559747-dreams-come-true-inspirational-hand-written-brush-calligraphy-lettering-vector-illustration.jpg', author: 'Paulo Coelho, The Alchemist', quote: 'It\'s the possibility of having a dream come true that makes life interesting.'},
   {photoUrl: 'https://thumbs.dreamstime.com/b/fear-failure-can-separate-person-world-lock-isolation-limits-pictured-as-human-figure-locked-inside-202002905.jpg', author: 'Paulo Coelho, The Alchemist', quote: 'There is only one thing that makes a dream impossible to achieve: the fear of failure.'},
   {photoUrl: 'https://previews.123rf.com/images/arcady31/arcady311405/arcady31140500019/28415765-best-of-the-best-icon.jpg', author: '', quote: 'Do the best you can with what you have where you are.'},
+  {photoUrl: 'https://i.pinimg.com/564x/bf/ea/ce/bfeace860675fcb127337ba89e128662.jpg', author: '', quote: 'A wise man once said nothing'},
 ]
 
 module.exports.quotes = quotes;

@@ -1,14 +1,3 @@
-// module.exports = (request, response) => {
-//     response.json({
-//       body: request.body,
-//       query: request.query,
-//       cookies: request.cookies,
-//     });
-// };
-// https://github.com/yagop/node-telegram-bot-api/issues/319#issuecomment-324963294
-// Fixes an error with Promise cancellation
-// process.env.NTBA_FIX_319 = 'test';
-
 // Require our Telegram helper package
 const TelegramBot = require('node-telegram-bot-api');
 
@@ -23,6 +12,7 @@ module.exports = async (request, response) => {
 
         // Retrieve the POST request body that gets sent from Telegram
         const { body } = request;
+        console.log('body', body)
 
         // Ensure that this is a message being sent
         if (body.message) {
@@ -45,5 +35,9 @@ module.exports = async (request, response) => {
         console.error('Error sending message');
         console.log(error.toString());
     }
-    response.send('Ok');
+    
+    // Acknowledge the message with Telegram
+    // by sending a 200 HTTP status code
+    // The message here doesn't matter.
+    response.send('OK');
 };

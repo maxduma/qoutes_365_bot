@@ -1,4 +1,4 @@
-const { Telegraf, Markup } = require('telegraf');
+const { Telegraf } = require('telegraf');
 require('dotenv').config();
 const text = require('./const');
 const data = require('./data');
@@ -101,3 +101,5 @@ bot.launch();
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
+
