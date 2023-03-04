@@ -55,7 +55,7 @@ bot.start(async (ctx) => {
     await ctx.reply(`Hello, ${ctx.message.from.first_name ? ctx.message.from.first_name : 'stranger'}! \u{270B}`);
     await ctx.reply(`\u{1F601} Let's start!`);
     await ctx.reply(`Here's your first quote ${ctx.message.from.first_name ? ctx.message.from.first_name : ""}, next one in 24 hours! \u{1F504}\u{1F550}`);
-    // await showAll(ctx)
+    // await showAll(ctx);
     const quoteObj = getQuoteForToday();
     showQuote(ctx, quoteObj);
     await setInterval(() => {
