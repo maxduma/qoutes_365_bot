@@ -3,6 +3,7 @@ require("dotenv").config();
 const text = require("./const");
 const data = require("./data");
 const bot = new Telegraf(process.env.BOT_TOKEN);
+const port = process.env.PORT || 3000;
 
 const getQuoteForToday = () => {
   const now = new Date();
@@ -107,7 +108,6 @@ bot.command("random", (ctx) => {
   }
 });
 
-const port = process.env.PORT || 3000;
 bot.startWebhook(
   `https://api.telegram.org/bot${process.env.BOT_TOKEN}/setWebhook?url=${process.env.URL}/api/${process.env.BOT_TOKEN}`,
   null,
