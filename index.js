@@ -108,12 +108,6 @@ bot.command("random", (ctx) => {
   }
 });
 
-bot.startWebhook(
-  `https://api.telegram.org/bot${process.env.BOT_TOKEN}/setWebhook?url=${process.env.URL}/api/${process.env.BOT_TOKEN}`,
-  null,
-  port
-);
-
 bot.on("sticker", (ctx) => ctx.reply("👍"));
 bot.hears(["hi", "Hey", "hey", "Hi", "Hello", "hello", "What is up?"], (ctx) =>
   ctx.reply("Hey there")
